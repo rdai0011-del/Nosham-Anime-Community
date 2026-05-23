@@ -173,28 +173,29 @@
 		
 })(jQuery);
 
-const filterButtons = document.querySelectorAll('.filter-button');
-const eventCards = document.querySelectorAll('.event-card');
+window.addEventListener('load', function() {
+	const filterButtons = document.querySelectorAll('.filter-button');
+	const eventCards = document.querySelectorAll('.event-card');
 
-filterButtons.forEach(function(button) {
-	button.addEventListener('click', function() {
-		const selectedFilter = button.getAttribute('data-filter');
+	filterButtons.forEach(function(button) {
+		button.addEventListener('click', function() {
+			const selectedFilter = button.getAttribute('data-filter');
 
-		filterButtons.forEach(function(btn) {
-			btn.classList.remove('active');
-		});
+			filterButtons.forEach(function(btn) {
+				btn.classList.remove('active');
+			});
 
-		button.classList.add('active');
+			button.classList.add('active');
 
-		eventCards.forEach(function(card) {
-			const cardCategory = card.getAttribute('data-category');
+			eventCards.forEach(function(card) {
+				const cardCategory = card.getAttribute('data-category');
 
-			if (selectedFilter === 'all' || selectedFilter === cardCategory) {
-				card.classList.remove('hidden');
-			} else {
-				card.classList.add('hidden');
-			}
+				if (selectedFilter === 'all' || selectedFilter === cardCategory) {
+					card.classList.remove('hidden');
+				} else {
+					card.classList.add('hidden');
+				}
+			});
 		});
 	});
 });
-		
